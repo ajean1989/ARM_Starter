@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  mariadb:
+    image: mariadb:10.11.5
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${PWD_MARIADB:?error}
+      MYSQL_DATABASE: ARMarket
+    volumes:
+      - ../../volumes/mariadb/db:/var/lib/mysql:Z
+      - ../../volumes/mariadb/backup:/backup
+    ports:
+      - "3306:3306"  # Port MariaDB
+    networks:
+      - production-network
+  
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8082:8080
+
+networks:
+  production-network:
+    driver: bridge

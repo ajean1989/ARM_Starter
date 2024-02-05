@@ -1,0 +1,7 @@
+entryPoints:
+  web:
+    address: :80
+
+providers:
+  # Enable the file provider to define routers / middlewares / services in file
+  docker: {}
