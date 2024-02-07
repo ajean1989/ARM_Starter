@@ -30,6 +30,10 @@ services:
       ME_CONFIG_BASICAUTH_PASSWORD : ${PWD_MONGODB:?error}
     depends_on:
       - mongodb
+    networks:
+      - production-network
+    labels:
+      - traefik.http.routers.mongo-express.rule=Path(`/mongoexpress`)
 
 networks:
   production-network:

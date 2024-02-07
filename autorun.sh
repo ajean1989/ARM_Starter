@@ -8,5 +8,7 @@ cd Mongodb
 docker compose up -d
 
 cd ..
-# cd Traefik
-# docker compose up -d
+cd Traefik
+docker compose up -d
+
+cd ..
