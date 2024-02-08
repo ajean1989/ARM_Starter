@@ -1,5 +1,8 @@
 #!/bin/bash
 
+docker network create --driver=bridge production-network
+sleep 5
+
 cd Mariadb 
 docker compose up -d
 

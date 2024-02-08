@@ -23,11 +23,12 @@ services:
       - 8082:8080
     networks:
       - production-network
-
     labels:
-      - traefik.http.routers.adminer.rule=Path(`/adminer`)
+      - traefik.http.routers.adminer.rule=PathPrefix(`/adminer`)
 
 
 networks:
   production-network:
-    driver: bridge
+    name: production-network
+    external: true
+
