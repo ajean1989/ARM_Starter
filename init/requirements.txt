@@ -1,0 +1,5 @@
+sqlalchemy
+mariadb
+pytest
+pymongo
+httpx

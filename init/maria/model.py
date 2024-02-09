@@ -9,12 +9,16 @@ from sqlalchemy.orm import sessionmaker, declarative_base, relationship
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL
 )
+engine_test = create_engine(
+    SQLALCHEMY_DATABASE_URL_TEST
+)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+SessionLocal_test = sessionmaker(autocommit=False, autoflush=False, bind=engine_test)
 
 Base = declarative_base()
 
-# Table "_user"
+
 class User(Base):
     __tablename__ = 'user'
 
@@ -75,10 +79,13 @@ class Scan(Base):
     item = relationship('Item', back_populates='scan')
     user = relationship('User', back_populates='scan')
 
+
+
 # Ajouter les tables à la base de données
 Base.metadata.create_all(engine)
+Base.metadata.create_all(engine_test)
 
 # Créer une session pour interagir avec la base de données
-Session = sessionmaker(bind=engine)
-session = Session()
+# Session = sessionmaker(bind=engine)
+# session = Session()
 
