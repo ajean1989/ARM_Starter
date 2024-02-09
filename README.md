@@ -6,6 +6,7 @@ Lance :
 - MariaDB
 - MongoDB
 - Traefik
+- Python pour lancer des tests 
 
 Les volumes sont dans le dossier parent de ce repo.
 

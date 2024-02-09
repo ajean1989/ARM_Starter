@@ -13,3 +13,7 @@ cd Traefik
 docker compose up -d
 
 cd ..
+cd init
+docker compose up -d
+
+cd ..
