@@ -25,6 +25,6 @@ jobs:
       - name: Checkout main repository
         uses: actions/checkout@v4
 
-      - name: Execute autorun.sh from "repo"
-        run: autorun.sh
+      - name: Run containers
+        run: bash autorun.sh
 
