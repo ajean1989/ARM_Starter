@@ -24,7 +24,7 @@ SQLALCHEMY_DATABASE_URL_TEST = f"mariadb+mariadbconnector://{user_maria}:{pass_m
 
 # Mongo DB
 
-adresse_mongo = os.getenv("SERVER_VPS1_IP")
+
 port_mongo = 27017
 user_mongo = os.getenv("USER_MONGODB")
 pass_mongo = os.getenv("PWD_MONGODB")
