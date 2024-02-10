@@ -8,9 +8,9 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${USER_MONGODB:?error}
       MONGO_INITDB_ROOT_PASSWORD: ${PWD_MONGODB:?error}    
-    volumes:
-      - ../../volumes/mongodb:/data/db
-      - ../../volumes/mongodb/backup:/backup
+    # volumes:
+    #   - ../../volumes/mongodb:/data/db
+    #   - ../../volumes/mongodb/backup:/backup
     ports:
       - "27017:27017"  # Port MongoDB
     networks:

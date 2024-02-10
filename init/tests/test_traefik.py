@@ -2,6 +2,6 @@
 
 import httpx
 
-def test_aminer():
-    response = httpx.get('http://localhost/adminer/')
+def test_adminer():
+    response = httpx.get('http://adminer/adminer/')
     assert response.status_code == 200

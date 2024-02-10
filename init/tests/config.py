@@ -10,7 +10,7 @@ API_KEYS = {key: "admin"}
 # maria DB
 
 # adresse_maria = os.getenv("SERVER_VPS1_IP")
-adresse_maria = "localhost"
+adresse_maria = "mariadb"
 port_maria = 3306
 user_maria = os.getenv("USER_MARIADB")
 pass_maria = os.getenv("PWD_MARIADB")
