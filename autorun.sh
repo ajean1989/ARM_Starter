@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Permet au code de s'arrêter et renvoyer une erreur en cas de problème. 
+set -e
+
 docker network create --driver=bridge production-network
 sleep 5
 
