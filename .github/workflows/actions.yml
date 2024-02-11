@@ -28,7 +28,7 @@ jobs:
       - name: Run containers
         run: bash run_build.sh
 
-   test:
+  test:
     needs: build
     runs-on: ubuntu-latest
 
