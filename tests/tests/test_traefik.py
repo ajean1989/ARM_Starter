@@ -3,6 +3,6 @@
 import httpx
 
 def test_adminer():
-    response = httpx.get('http://adminer/adminer/')
+    response = httpx.get('http://traefik/adminer/')
     print(response)
     assert response.status_code == 200
