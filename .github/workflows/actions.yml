@@ -32,9 +32,18 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
 
+    environment: my-env
+    env:
+      ARM_VPS1_API_KEY: ${{ secrets.ARM_VPS1_API_KEY }}
+      PWD_MARIADB: ${{ secrets.PWD_MARIADB }}
+      PWD_MONGODB: ${{ secrets.PWD_MONGODB }}
+      SERVER_VPS1_IP: ${{ secrets.SERVER_VPS1_IP }}
+      USER_MARIADB: ${{ secrets.USER_MARIADB }}
+      USER_MONGODB: ${{ secrets.USER_MONGODB }}
+
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
 
     - name: Run tests
