@@ -1,16 +1,16 @@
-@REM docker network create --driver=bridge production-network
-@REM timeout /t 5
+docker network create --driver=bridge production-network
+timeout /t 5
 
-@REM cd Mariadb 
-@REM docker compose up --build -d --force-recreate
+cd Mariadb 
+docker compose up --build -d --force-recreate
 
-@REM cd ..
-@REM cd Mongodb 
-@REM docker compose up --build -d --force-recreate
+cd ..
+cd Mongodb 
+docker compose up --build -d --force-recreate
 
-@REM cd ..
-@REM cd Traefik
-@REM docker compose up --build -d --force-recreate
+cd ..
+cd Traefik
+docker compose up --build -d --force-recreate
 
 
 timeout /t 10
