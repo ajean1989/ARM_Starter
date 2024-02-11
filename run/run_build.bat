@@ -11,12 +11,3 @@ docker compose up --build -d --force-recreate
 cd ..
 cd Traefik
 docker compose up --build -d --force-recreate
-
-
-timeout /t 10
-
-cd ..
-cd init
-docker compose up --build --force-recreate
-
-cd ..
