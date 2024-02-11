@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Permet au code de s'arrêter et renvoyer une erreur en cas de problème. 
-# set -e
+set -e
 
 # docker network create --driver=bridge production-network
 # sleep 5
@@ -19,7 +19,7 @@
 
 sleep 10
 
-cd ..
+# cd ..
 cd tests
 docker compose up --build -d
 
