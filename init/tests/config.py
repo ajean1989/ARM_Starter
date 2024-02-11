@@ -17,9 +17,9 @@ pass_maria = os.getenv("PWD_MARIADB")
 base_maria = "ARMarket"
 base_maria_test = "ARMarket_test"
 
-SQLALCHEMY_DATABASE_URL = f"mariadb+mariadbconnector://{user_maria}:{pass_maria}@{adresse_maria}/{base_maria}"
+SQLALCHEMY_DATABASE_URL = f"mariadb+mariadbconnector://{user_maria}:{pass_maria}@{adresse_maria}:{port_maria}/{base_maria}"
 
-SQLALCHEMY_DATABASE_URL_TEST = f"mariadb+mariadbconnector://{user_maria}:{pass_maria}@{adresse_maria}/{base_maria_test}"
+SQLALCHEMY_DATABASE_URL_TEST = f"mariadb+mariadbconnector://{user_maria}:{pass_maria}@{adresse_maria}:{port_maria}/{base_maria_test}"
 
 
 # Mongo DB

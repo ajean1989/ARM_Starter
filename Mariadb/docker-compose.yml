@@ -9,7 +9,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${PWD_MARIADB:?error}
-      # XARNING #
+      # WARNING #
       # Il faut se connecter avec le nom du container dans adminer dans host #
     ports:
       - "3306:3306"  # Port MariaDB

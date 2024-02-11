@@ -1,5 +1,5 @@
 import pytest
-from sqlalchemy import create_engine, MetaData
+from sqlalchemy import create_engine, text, MetaData
 
 from config import *
 
@@ -24,7 +24,7 @@ def engine_test():
 # Test de connexion à la base de données
 def test_db_connection(engine):
     with engine.connect() as connection:
-        result = connection.execute("SELECT 1")
+        result = connection.execute(text("SELECT 1"))
         assert result.scalar() == 1
 
 # Test de structure des tables
@@ -38,7 +38,7 @@ def test_table_structure(engine):
 # Test de connexion à la base de données de test
 def test_db_connection(engine_test):
     with engine_test.connect() as connection:
-        result = connection.execute("SELECT 1")
+        result = connection.execute(text("SELECT 1"))
         assert result.scalar() == 1
 
 # Test de structure des tables de test
@@ -47,4 +47,4 @@ def test_table_structure(engine_test):
     metadata.reflect(bind=engine_test)
     assert "item" in metadata.tables
     assert "scan" in metadata.tables
-    assert "username" in metadata.tables["user"].columns
+    assert "username" in metadata.tables["_user"].columns

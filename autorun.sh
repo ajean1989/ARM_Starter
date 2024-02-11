@@ -17,6 +17,8 @@ cd ..
 cd Traefik
 docker compose up --build -d
 
+sleep 10
+
 cd ..
 cd init
 docker compose up --build -d
