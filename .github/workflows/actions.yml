@@ -80,7 +80,8 @@ jobs:
       run: |
         sudo chmod 600 ./.ssh/id_arm 
         eval `ssh-agent`
-        ssh-add ./.ssh/id_arm -o "&SSH_PASSPHRASE"
+        ssh-add ./.ssh/id_arm -o 
+        &SSH_PASSPHRASE
 
     # - name: création de l'agent pour ne pas entrer la passphrase 1/2
     #   run: printenv
