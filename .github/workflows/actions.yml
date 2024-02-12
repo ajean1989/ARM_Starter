@@ -72,7 +72,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: private key copy
-      run: mkdir .ssh && echo "-----BEGIN OPENSSH PRIVATE KEY-----" > ./.ssh/id_arm && echo "$SSH_PRIVATE_KEY_VPS1" >> ./.ssh/id_arm && echo "-----END OPENSSH PRIVATE KEY-----" > ./.ssh/id_arm
+      run: mkdir .ssh && echo "-----BEGIN OPENSSH PRIVATE KEY-----\n" > ./.ssh/id_arm && echo "$SSH_PRIVATE_KEY_VPS1\n" >> ./.ssh/id_arm && echo "-----END OPENSSH PRIVATE KEY-----" > ./.ssh/id_arm
 
     - name: création de l'agent pour ne pas entrer la passphrase 1/2
       run: eval $(ssh-agent) && sudo chmod 600 ./.ssh/id_arm && ssh-add ./.ssh/id_arm
