@@ -86,7 +86,7 @@ jobs:
         echo "$SSH_PASSPHRASE" | ssh-add ~/.ssh/id_arm
         ssh-add -l
         pwd
-        ls -
+ 
 
 
     # - name: création de l'agent pour ne pas entrer la passphrase 1/2
