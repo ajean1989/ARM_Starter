@@ -71,8 +71,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: création de l'agent pour ne pas entrer la passphrase
+    - name: création de l'agent pour ne pas entrer la passphrase 1/2
       run: eval `ssh-agent` && echo "{{ secrets.SSH_PRIVATE_KEY_VPS1 }}" | ssh-add -
+
+    - name: création de l'agent pour ne pas entrer la passphrase 2/2
+      run: ssh-add
 
     - name: rm all active container
       run: ssh debian@${{ secrets.ARM_VPS1_API_KEY }} "docker rm -f $(docker ps -a -q)"
