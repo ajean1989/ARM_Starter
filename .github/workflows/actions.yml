@@ -79,10 +79,10 @@ jobs:
     - name: création de l'agent pour ne pas entrer la passphrase 1/2
       run: |
         sudo chmod 600 ~/.ssh/id_arm 
-        eval `ssh-agent`
-        printenv
-        echo "$SSH_PASSPHRASE" | ssh-add ~/.ssh/id_arm
-        ssh-add -l
+        # eval `ssh-agent`
+        # printenv
+        # echo "$SSH_PASSPHRASE" | ssh-add ~/.ssh/id_arm
+        # ssh-add -l
 
 
     # - name: création de l'agent pour ne pas entrer la passphrase 1/2
@@ -92,7 +92,7 @@ jobs:
     #   run: ssh-add ./.ssh/id_arm
 
     - name: rm all active container
-      run: ssh -i ~/.ssh/id_arm -o StrictHostKeyChecking=no debian@$SERVER_VPS1_IP "docker rm -f $(docker ps -a -q)"
+      run: echo "$SSH_PASSPHRASE" | ssh -i ~/.ssh/id_arm -o StrictHostKeyChecking=no debian@$SERVER_VPS1_IP "docker rm -f $(docker ps -a -q)"
 
     - name: Copy mariadb files
       run: scp -r ./ARM_Starter/Mariadb debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Mariadb/
