@@ -67,6 +67,7 @@ jobs:
       USER_MARIADB: ${{ secrets.USER_MARIADB }}
       USER_MONGODB: ${{ secrets.USER_MONGODB }}
       SSH_PRIVATE_KEY_VPS1: ${{ secrets.SSH_PRIVATE_KEY_VPS1 }}
+      SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
 
     steps:
     - name: Checkout repository
@@ -76,7 +77,7 @@ jobs:
       run: mkdir .ssh && echo "$SSH_PRIVATE_KEY_VPS1" > ./.ssh/id_arm
 
     - name: création de l'agent pour ne pas entrer la passphrase 1/2
-      run: eval $(ssh-agent) && sudo chmod 600 ./.ssh/id_arm && ssh-add ./.ssh/id_arm
+      run: eval $(ssh-agent) && sudo chmod 600 ./.ssh/id_arm && DISPLAY=None SSH_ASKPASS=$SSH_PASSPHRASE ssh-add ./.ssh/id_arm
 
     # - name: création de l'agent pour ne pas entrer la passphrase 1/2
     #   run: printenv
@@ -85,23 +86,23 @@ jobs:
     #   run: ssh-add ./.ssh/id_arm
 
     - name: rm all active container
-      run: ssh debian@${{ secrets.ARM_VPS1_API_KEY }} "docker rm -f $(docker ps -a -q)"
+      run: ssh debian@$SERVER_VPS1_IP "docker rm -f $(docker ps -a -q)"
 
     - name: Copy mariadb files
-      run: scp -r ./ARM_Starter/Mariadb debian@${{ secrets.ARM_VPS1_API_KEY }}:/home/debian/ARMarket/ARM_Starter/Mariadb/
+      run: scp -r ./ARM_Starter/Mariadb debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Mariadb/
 
     - name: Copy mongodb files
-      run: scp -r ./ARM_Starter/Mongodb debian@${{ secrets.ARM_VPS1_API_KEY }}:/home/debian/ARMarket/ARM_Starter/Mongodb/
+      run: scp -r ./ARM_Starter/Mongodb debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Mongodb/
 
     - name: Copy traefik files
-      run: scp -r ./ARM_Starter/Traefik debian@${{ secrets.ARM_VPS1_API_KEY }}:/home/debian/ARMarket/ARM_Starter/Traefik/
+      run: scp -r ./ARM_Starter/Traefik debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Traefik/
 
     - name: Copy autorun file
-      run: scp ./ARM_Starter/run/run_build.sh debian@${{ secrets.ARM_VPS1_API_KEY }}:/home/debian/ARMarket/ARM_Starter/run_build.sh
+      run: scp ./ARM_Starter/run/run_build.sh debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/run_build.sh
 
     - name: run containers
-      run: scp ./ARM_Starter/run/run_build.sh debian@${{ secrets.ARM_VPS1_API_KEY }}:/home/debian/ARMarket/ARM_Starter/run_build.sh
+      run: scp ./ARM_Starter/run/run_build.sh debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/run_build.sh
 
     - name: rm all active container
-      run: ssh debian@${{ secrets.ARM_VPS1_API_KEY }} "bash ./ARMarket/ARM_Starter/run_build.sh"
+      run: ssh debian@$SERVER_VPS1_IP "bash ./ARMarket/ARM_Starter/run_build.sh"
 
