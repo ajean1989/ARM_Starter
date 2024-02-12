@@ -84,6 +84,7 @@ jobs:
         apt update && apt install net-tools
         ifconfig
         echo "$SSH_PASSPHRASE" | ssh-add ./.ssh/id_arm
+        ssh-add -l
 
     # - name: création de l'agent pour ne pas entrer la passphrase 1/2
     #   run: printenv
