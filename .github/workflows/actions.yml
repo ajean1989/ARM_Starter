@@ -78,7 +78,6 @@ jobs:
 
     - name: création de l'agent pour ne pas entrer la passphrase 1/2
       run: |
-        eval $(ssh-agent) 
         sudo chmod 600 ./.ssh/id_arm 
         ssh-agent -a $SSH_AUTH_SOCK > /dev/null
         echo 'echo $SSH_PASSPHRASE' > ~/.ssh_askpass && chmod +x ~/.ssh_askpass
