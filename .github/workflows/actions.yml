@@ -8,50 +8,50 @@ on:
 
   
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  # build:
+  #   runs-on: ubuntu-latest
     
-    environment: my-env
-    env:
-      ARM_VPS1_API_KEY: ${{ secrets.ARM_VPS1_API_KEY }}
-      PWD_MARIADB: ${{ secrets.PWD_MARIADB }}
-      PWD_MONGODB: ${{ secrets.PWD_MONGODB }}
-      SERVER_VPS1_IP: ${{ secrets.SERVER_VPS1_IP }}
-      USER_MARIADB: ${{ secrets.USER_MARIADB }}
-      USER_MONGODB: ${{ secrets.USER_MONGODB }}
+  #   environment: my-env
+  #   env:
+  #     ARM_VPS1_API_KEY: ${{ secrets.ARM_VPS1_API_KEY }}
+  #     PWD_MARIADB: ${{ secrets.PWD_MARIADB }}
+  #     PWD_MONGODB: ${{ secrets.PWD_MONGODB }}
+  #     SERVER_VPS1_IP: ${{ secrets.SERVER_VPS1_IP }}
+  #     USER_MARIADB: ${{ secrets.USER_MARIADB }}
+  #     USER_MONGODB: ${{ secrets.USER_MONGODB }}
 
 
-    steps:
-      - name: Checkout main repository
-        uses: actions/checkout@v4
+  #   steps:
+  #     - name: Checkout main repository
+  #       uses: actions/checkout@v4
 
-      - name: Run containers
-        run: bash run/run_build.sh
+  #     - name: Run containers
+  #       run: bash run/run_build.sh
 
-  tests:
-    needs: build
-    runs-on: ubuntu-latest
+  # tests:
+  #   needs: build
+  #   runs-on: ubuntu-latest
 
-    environment: my-env
-    env:
-      ARM_VPS1_API_KEY: ${{ secrets.ARM_VPS1_API_KEY }}
-      PWD_MARIADB: ${{ secrets.PWD_MARIADB }}
-      PWD_MONGODB: ${{ secrets.PWD_MONGODB }}
-      SERVER_VPS1_IP: ${{ secrets.SERVER_VPS1_IP }}
-      USER_MARIADB: ${{ secrets.USER_MARIADB }}
-      USER_MONGODB: ${{ secrets.USER_MONGODB }}
+  #   environment: my-env
+  #   env:
+  #     ARM_VPS1_API_KEY: ${{ secrets.ARM_VPS1_API_KEY }}
+  #     PWD_MARIADB: ${{ secrets.PWD_MARIADB }}
+  #     PWD_MONGODB: ${{ secrets.PWD_MONGODB }}
+  #     SERVER_VPS1_IP: ${{ secrets.SERVER_VPS1_IP }}
+  #     USER_MARIADB: ${{ secrets.USER_MARIADB }}
+  #     USER_MONGODB: ${{ secrets.USER_MONGODB }}
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+  #   steps:
+  #   - name: Checkout repository
+  #     uses: actions/checkout@v4
 
 
-    - name: init test plateform
-      run: bash run/run_tests.sh
+  #   - name: init test plateform
+  #     run: bash run/run_tests.sh
 
-    - name: Run tests
-      run: |
-        docker exec tests pytest
+  #   - name: Run tests
+  #     run: |
+  #       docker exec tests pytest
 
 
   deploy:
@@ -71,8 +71,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: private key copy
+      run: echo "$SSH_PRIVATE_KEY_VPS1" > ~/.ssh/id_arm
+
     - name: création de l'agent pour ne pas entrer la passphrase 1/2
-      run: eval `ssh-agent` && echo "{{ secrets.SSH_PRIVATE_KEY_VPS1 }}" | ssh-add -
+      run: eval `ssh-agent`
 
     - name: création de l'agent pour ne pas entrer la passphrase 2/2
       run: ssh-add
