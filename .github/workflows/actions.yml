@@ -81,7 +81,7 @@ jobs:
         sudo chmod 600 ./.ssh/id_arm 
         eval `ssh-agent`
         printenv
-        echo "$SSH_PASSPHRASE" | ssh-add ./.ssh/id_arm -o "StrictHostKeyChecking=no"
+        echo "$SSH_PASSPHRASE" | ssh-add ./.ssh/id_arm
 
     # - name: création de l'agent pour ne pas entrer la passphrase 1/2
     #   run: printenv
