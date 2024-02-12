@@ -77,7 +77,7 @@ jobs:
       run: mkdir .ssh && echo "$SSH_PRIVATE_KEY_VPS1" > ./.ssh/id_arm
 
     - name: known host copy
-      run: echo "5.196.7.246 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCyOJIhNVN3vXdrZ2LzX8S1HD0q0eeWGB8zLDO4ncM75f8hgKQgw/oyN9BhqbNd4Mv1BmS5GFaCYYxfpiwc4xas= " > ./.ssh/known_hosts
+      run: echo "5.196.7.246 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCyOJIhNVN3vXdrZ2LzX8S1HD0q0eeWGB8zLDO4ncM75f8hgKQgw/oyN9BhqbNd4Mv1BmS5GFaCYYxfpiwc4xas=" > ./.ssh/known_hosts
 
     - name: création de l'agent pour ne pas entrer la passphrase 1/2
       run: |
@@ -93,7 +93,7 @@ jobs:
     #   run: ssh-add ./.ssh/id_arm
 
     - name: rm all active container
-      run: ssh -i ./.ssh/id_arm debian@$SERVER_VPS1_IP "docker rm -f $(docker ps -a -q)"
+      run: ssh -i ./.ssh/id_arm  debian@$SERVER_VPS1_IP "docker rm -f $(docker ps -a -q)"
 
     - name: Copy mariadb files
       run: scp -r ./ARM_Starter/Mariadb debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Mariadb/
