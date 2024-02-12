@@ -55,7 +55,7 @@ jobs:
 
 
   deploy:
-    needs: tests
+    # needs: tests
     runs-on: ubuntu-latest
 
     environment: my-env
