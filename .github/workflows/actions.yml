@@ -74,7 +74,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: private key copy
-      run: mkdir ~/.ssh && echo "$SSH_PRIVATE_KEY_VPS1" | tr -d '\r' > ~/.ssh/id_arm
+      run: mkdir ~/.ssh && echo "$SSH_PRIVATE_KEY_VPS1" | tr -d '\n' > ~/.ssh/id_arm
 
     - name: création de l'agent pour ne pas entrer la passphrase 1/2
       run: |
