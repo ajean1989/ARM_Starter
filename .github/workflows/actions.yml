@@ -75,11 +75,11 @@ jobs:
       run: mkdir .ssh && echo "$SSH_PRIVATE_KEY_VPS1" > ./.ssh/id_arm
 
     - name: création de l'agent pour ne pas entrer la passphrase 1/2
-      run: eval `ssh-agent`
+      run: eval $(ssh-agent)
 
     - name: création de l'agent pour ne pas entrer la passphrase 1/2
       run: printenv
-      
+
     - name: création de l'agent pour ne pas entrer la passphrase 2/2
       run: ssh-add ./.ssh/id_arm
 
