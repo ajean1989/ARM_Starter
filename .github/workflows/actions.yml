@@ -74,7 +74,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: private key copy
-      run: echo "$SSH_PRIVATE_KEY_VPS1" > ~/.ssh/id_arm
+      run: mkdir ~/.ssh && echo "$SSH_PRIVATE_KEY_VPS1" > ~/.ssh/id_arm
 
     - name: création de l'agent pour ne pas entrer la passphrase 1/2
       run: |
@@ -83,8 +83,6 @@ jobs:
         printenv
         echo "$SSH_PASSPHRASE" | ssh-add ~/.ssh/id_arm
         ssh-add -l
-        pwd
- 
 
 
     # - name: création de l'agent pour ne pas entrer la passphrase 1/2
