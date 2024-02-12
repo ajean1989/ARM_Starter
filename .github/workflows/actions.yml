@@ -9,14 +9,14 @@ on:
   
 jobs:
   build:
-    extends:
+    uses:
       - .github/workflows/build.yml
 
   tests:
-    extends:
+    uses:
       - .github/workflows/tests.yml
 
   deploy:
-    extends:
+    uses:
       - .github/workflows/deploy.yml
 
