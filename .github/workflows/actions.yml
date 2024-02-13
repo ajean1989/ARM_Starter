@@ -94,18 +94,6 @@ jobs:
 
     - name: Copy autorun file
       run: scp -i ~/.ssh/id_test ./run/run_build.sh debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/run_build.sh
-
-    -name: création d'un .env
-      run: |
-        echo"
-        export = ARM_VPS1_API_KEY=$ARM_VPS1_API_KEY
-        export = PWD_MARIADB=$PWD_MARIADB
-        export = PWD_MONGODB=$PWD_MONGODB
-        export = SERVER_VPS1_IP=$SERVER_VPS1_IP
-        export = USER_MARIADB=$USER_MARIADB
-        export = USER_MONGODB=$USER_MONGODB
-        export = SSH_PRIVATE_KEY_VPS1=$SSH_PRIVATE_KEY_VPS1
-        export = SSH_PASSPHRASE=$SSH_PASSPHRASE
         
 
     - name: run containers
