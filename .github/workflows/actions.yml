@@ -103,9 +103,8 @@ jobs:
         export PWD_MONGODB=$PWD_MONGODB
         export SERVER_VPS1_IP=$SERVER_VPS1_IP
         export USER_MARIADB=$USER_MARIADB
-        export USER_MONGODB=$USER_MONGODB
-        EOF
-        cd ./ARMarket/ARM_Starter/
+        export USER_MONGODB=$USER_MONGODB;
+        cd ./ARMarket/ARM_Starter/;
         bash run_build.sh
         EOF
 
