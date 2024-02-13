@@ -8,54 +8,54 @@ on:
 
   
 jobs:
-  # build:
-  #   runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
     
-  #   environment: my-env
-  #   env:
-  #     ARM_VPS1_API_KEY: ${{ secrets.ARM_VPS1_API_KEY }}
-  #     PWD_MARIADB: ${{ secrets.PWD_MARIADB }}
-  #     PWD_MONGODB: ${{ secrets.PWD_MONGODB }}
-  #     SERVER_VPS1_IP: ${{ secrets.SERVER_VPS1_IP }}
-  #     USER_MARIADB: ${{ secrets.USER_MARIADB }}
-  #     USER_MONGODB: ${{ secrets.USER_MONGODB }}
+    environment: my-env
+    env:
+      ARM_VPS1_API_KEY: ${{ secrets.ARM_VPS1_API_KEY }}
+      PWD_MARIADB: ${{ secrets.PWD_MARIADB }}
+      PWD_MONGODB: ${{ secrets.PWD_MONGODB }}
+      SERVER_VPS1_IP: ${{ secrets.SERVER_VPS1_IP }}
+      USER_MARIADB: ${{ secrets.USER_MARIADB }}
+      USER_MONGODB: ${{ secrets.USER_MONGODB }}
 
 
-  #   steps:
-  #     - name: Checkout main repository
-  #       uses: actions/checkout@v4
+    steps:
+      - name: Checkout main repository
+        uses: actions/checkout@v4
 
-  #     - name: Run containers
-  #       run: bash run/run_build.sh
+      - name: Run containers
+        run: bash run/run_build.sh
 
-  # tests:
-  #   needs: build
-  #   runs-on: ubuntu-latest
+  tests:
+    needs: build
+    runs-on: ubuntu-latest
 
-  #   environment: my-env
-  #   env:
-  #     ARM_VPS1_API_KEY: ${{ secrets.ARM_VPS1_API_KEY }}
-  #     PWD_MARIADB: ${{ secrets.PWD_MARIADB }}
-  #     PWD_MONGODB: ${{ secrets.PWD_MONGODB }}
-  #     SERVER_VPS1_IP: ${{ secrets.SERVER_VPS1_IP }}
-  #     USER_MARIADB: ${{ secrets.USER_MARIADB }}
-  #     USER_MONGODB: ${{ secrets.USER_MONGODB }}
+    environment: my-env
+    env:
+      ARM_VPS1_API_KEY: ${{ secrets.ARM_VPS1_API_KEY }}
+      PWD_MARIADB: ${{ secrets.PWD_MARIADB }}
+      PWD_MONGODB: ${{ secrets.PWD_MONGODB }}
+      SERVER_VPS1_IP: ${{ secrets.SERVER_VPS1_IP }}
+      USER_MARIADB: ${{ secrets.USER_MARIADB }}
+      USER_MONGODB: ${{ secrets.USER_MONGODB }}
 
-  #   steps:
-  #   - name: Checkout repository
-  #     uses: actions/checkout@v4
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
 
-  #   - name: init test plateform
-  #     run: bash run/run_tests.sh
+    - name: init test plateform
+      run: bash run/run_tests.sh
 
-  #   - name: Run tests
-  #     run: |
-  #       docker exec tests pytest
+    - name: Run tests
+      run: |
+        docker exec tests pytest
 
 
   deploy:
-    # needs: tests
+    needs: tests
     runs-on: ubuntu-latest
 
     environment: my-env
@@ -104,6 +104,5 @@ jobs:
         && export SERVER_VPS1_IP=$SERVER_VPS1_IP \
         && export USER_MARIADB=$USER_MARIADB \
         && export USER_MONGODB=$USER_MONGODB \
-        && pwd \
         && cd /home/debian/ARMarket/ARM_Starter/ \
         && bash run_build.sh"
