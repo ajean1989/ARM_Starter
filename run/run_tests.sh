@@ -3,8 +3,12 @@
 # Permet au code de s'arrêter et renvoyer une erreur en cas de problème. 
 set -e
 
-docker network create --driver=bridge production-network
-sleep 5
+if docker network ls | grep -q 'production-network'; then
+    echo "Le réseau production-network existe."
+else
+    docker network create --driver=bridge production-network
+    sleep 5
+fi
 
 cd Mariadb 
 docker compose up --build -d
