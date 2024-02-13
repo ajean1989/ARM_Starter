@@ -106,5 +106,5 @@ jobs:
         export USER_MONGODB=$USER_MONGODB
         cd ./ARMarket/ARM_Starter/
         bash run_build.sh
-      EOF
+        EOF
 
