@@ -96,5 +96,5 @@ jobs:
       run: scp -i ~/.ssh/id_test ./run/run_build.sh debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/run_build.sh
 
     - name: run containers
-      run: ssh -i ~/.ssh/id_test -o StrictHostKeyChecking=no debian@$SERVER_VPS1_IP "cd ./ARMarket/ARM_Starter/ && bash run_build.sh"
+      run: ssh -i ~/.ssh/id_test -o StrictHostKeyChecking=no debian@$SERVER_VPS1_IP "printenv && cd ./ARMarket/ARM_Starter/ && bash run_build.sh"
 
