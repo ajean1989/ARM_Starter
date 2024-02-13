@@ -105,7 +105,6 @@ jobs:
         export USER_MARIADB=$USER_MARIADB
         export USER_MONGODB=$USER_MONGODB;
         pwd;
-        cd ./ARMarket/ARM_Starter/;
+        cd /home/debian/ARMarket/ARM_Starter/;
         bash run_build.sh
         EOF
-
