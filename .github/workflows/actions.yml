@@ -81,7 +81,7 @@ jobs:
 
 
     - name: rm all active container
-      run: ssh -i ~/.ssh/id_test -o StrictHostKeyChecking=no debian@$SERVER_VPS1_IP "if [docker ps -a -q]; then docker ps -a -q | xargs docker rm -f fi"
+      run: ssh -i ~/.ssh/id_test -o StrictHostKeyChecking=no debian@$SERVER_VPS1_IP "if ["$(docker ps -aq)"]; then docker ps -a -q | xargs docker rm -f fi"
 
     - name: Copy mariadb files
       run: scp -i ~/.ssh/id_test -r ./Mariadb debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Mariadb/
