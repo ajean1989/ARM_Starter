@@ -97,7 +97,8 @@ jobs:
         
 
     - name: run containers
-      run: ssh -i ~/.ssh/id_test -o StrictHostKeyChecking=no debian@$SERVER_VPS1_IP "export ARM_VPS1_API_KEY=$ARM_VPS1_API_KEY\
+      run: |
+        ssh -i ~/.ssh/id_test -o StrictHostKeyChecking=no debian@$SERVER_VPS1_IP "export ARM_VPS1_API_KEY=$ARM_VPS1_API_KEY \
         && export PWD_MARIADB=$PWD_MARIADB \
         && export PWD_MONGODB=$PWD_MONGODB \
         && export SERVER_VPS1_IP=$SERVER_VPS1_IP \
