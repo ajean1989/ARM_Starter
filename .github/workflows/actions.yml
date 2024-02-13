@@ -109,5 +109,5 @@ jobs:
           cd ./ARMarket/ARM_Starter/
           bash run_build.sh
 
-        EOF"
+        EOF
 
