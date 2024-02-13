@@ -98,14 +98,13 @@ jobs:
 
     - name: run containers
       run: ssh -i ~/.ssh/id_test -o StrictHostKeyChecking=no debian@$SERVER_VPS1_IP << EOF
-          export = ARM_VPS1_API_KEY=$ARM_VPS1_API_KEY
-          export = PWD_MARIADB=$PWD_MARIADB
-          export = PWD_MONGODB=$PWD_MONGODB
-          export = SERVER_VPS1_IP=$SERVER_VPS1_IP
-          export = USER_MARIADB=$USER_MARIADB
-          export = USER_MONGODB=$USER_MONGODB
-          export = SSH_PRIVATE_KEY_VPS1=$SSH_PRIVATE_KEY_VPS1
-          export = SSH_PASSPHRASE=$SSH_PASSPHRASE
+          export ARM_VPS1_API_KEY=$ARM_VPS1_API_KEY
+          export PWD_MARIADB=$PWD_MARIADB
+          export PWD_MONGODB=$PWD_MONGODB
+          export SERVER_VPS1_IP=$SERVER_VPS1_IP
+          export USER_MARIADB=$USER_MARIADB
+          export USER_MONGODB=$USER_MONGODB
+
 
           cd ./ARMarket/ARM_Starter/
           bash run_build.sh
