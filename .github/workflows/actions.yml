@@ -73,6 +73,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: info
+      run: pwd
+
     - name: private key copy
       run: mkdir ~/.ssh && echo "$SSH_PRIVATE_KEY_VPS1" > ~/.ssh/id_test && sudo chmod 600 ~/.ssh/id_test
 
