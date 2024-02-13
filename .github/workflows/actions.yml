@@ -94,7 +94,7 @@ jobs:
     #   run: ssh-add ./.ssh/id_arm
 
     - name: rm all active container
-      run: echo "$SSH_PASSPHRASE" | ssh -i id_arm -o StrictHostKeyChecking=no debian@5.196.7.246 "echo 'hello'"
+      run: ssh -i id_arm -o StrictHostKeyChecking=no debian@5.196.7.246 "echo 'hello'"
 
     - name: Copy mariadb files
       run: scp -r ./ARM_Starter/Mariadb debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Mariadb/
