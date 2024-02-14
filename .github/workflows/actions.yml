@@ -26,7 +26,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run containers
-        run: bash run/run_build.sh
+        run: bash run/build.sh
 
   tests:
     needs: build
@@ -47,7 +47,7 @@ jobs:
 
 
     - name: init test plateform
-      run: bash run/run_tests.sh
+      run: bash run/tests.sh
 
     - name: Run tests
       run: |
@@ -93,7 +93,7 @@ jobs:
       run: scp -i ~/.ssh/id_test -r ./Traefik debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Traefik/
 
     - name: Copy autorun file
-      run: scp -i ~/.ssh/id_test ./run/run_build.sh debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/run_build.sh
+      run: scp -i ~/.ssh/id_test ./run/build.sh debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/build.sh
         
 
     - name: run containers
@@ -105,4 +105,4 @@ jobs:
         && export USER_MARIADB=$USER_MARIADB \
         && export USER_MONGODB=$USER_MONGODB \
         && cd /home/debian/ARMarket/ARM_Starter/ \
-        && bash run_build.sh"
+        && bash build.sh"
