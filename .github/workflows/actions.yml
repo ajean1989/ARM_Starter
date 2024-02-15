@@ -89,9 +89,6 @@ jobs:
     - name: private key copy
       run: mkdir ~/.ssh && echo "$SSH_PRIVATE_KEY_VPS1" > ~/.ssh/id_test && sudo chmod 600 ~/.ssh/id_test
 
-    - name: retrieve init.db
-      run: scp -i ~/.ssh/id_test -o StrictHostKeyChecking=no debian@$SERVER_VPS1_IP:/home/debian/ARMarket/volumes/mariadb/init/* ../../volumes/mariadb/init/
-
     - name: rm all active container
       run: ssh -i ~/.ssh/id_test -o StrictHostKeyChecking=no debian@$SERVER_VPS1_IP "if ["$(docker ps -aq)"]; then docker ps -a -q | xargs docker rm -f; fi"
 
