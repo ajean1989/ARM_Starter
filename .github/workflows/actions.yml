@@ -55,7 +55,7 @@ jobs:
       run: mkdir ~/.ssh && echo "$SSH_PRIVATE_KEY_VPS1" > ~/.ssh/id_test && sudo chmod 600 ~/.ssh/id_test
 
     - name: retrieve init.db
-      run: scp -i ~/.ssh/id_test -o StrictHostKeyChecking=no debian@$SERVER_VPS1_IP:/home/debian/ARMarket/volumes/mariadb/init/* ../../volumes/mariadb/init/
+      run: cd ../.. && ls && scp -i ~/.ssh/id_test -o StrictHostKeyChecking=no debian@$SERVER_VPS1_IP:/home/debian/ARMarket/volumes/mariadb/init/* ./volumes/mariadb/init/
 
     - name: init test plateform
       run: bash run/tests.sh
