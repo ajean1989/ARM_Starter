@@ -39,6 +39,7 @@ jobs:
       SERVER_VPS1_IP: ${{ secrets.SERVER_VPS1_IP }}
       USER_MARIADB: ${{ secrets.USER_MARIADB }}
       USER_MONGODB: ${{ secrets.USER_MONGODB }}
+      SSH_PRIVATE_KEY_VPS1: ${{ secrets.SSH_PRIVATE_KEY_VPS1 }}
 
     steps:
     - name: Checkout repository
@@ -68,7 +69,6 @@ jobs:
       USER_MARIADB: ${{ secrets.USER_MARIADB }}
       USER_MONGODB: ${{ secrets.USER_MONGODB }}
       SSH_PRIVATE_KEY_VPS1: ${{ secrets.SSH_PRIVATE_KEY_VPS1 }}
-      SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
 
     steps:
     - name: Checkout repository
