@@ -17,6 +17,6 @@ timeout /t 15
 
 cd ..
 cd tests
-docker compose up --build --force-recreate
+docker compose up --build -d --force-recreate
 
 cd ..
