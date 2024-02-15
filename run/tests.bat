@@ -13,7 +13,7 @@ cd Traefik
 docker compose up --build -d --force-recreate
 
 
-timeout /t 10
+timeout /t 15
 
 cd ..
 cd tests
