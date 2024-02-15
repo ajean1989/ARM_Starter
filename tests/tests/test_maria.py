@@ -47,4 +47,4 @@ def test_table_structure(engine_test):
     metadata.reflect(bind=engine_test)
     assert "item" in metadata.tables
     assert "scan" in metadata.tables
-    assert "username" in metadata.tables["_user"].columns
+    assert "username" in metadata.tables["user"].columns
