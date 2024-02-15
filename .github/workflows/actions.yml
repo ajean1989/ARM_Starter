@@ -84,16 +84,16 @@ jobs:
       run: ssh -i ~/.ssh/id_test -o StrictHostKeyChecking=no debian@$SERVER_VPS1_IP "if ["$(docker ps -aq)"]; then docker ps -a -q | xargs docker rm -f; fi"
 
     - name: Copy mariadb files
-      run: scp -i ~/.ssh/id_test -r ./Mariadb debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Mariadb/
+      run: sudo rm -f /home/debian/ARMarket/ARM_Starter/Mariadb/ && scp -i ~/.ssh/id_test ./Mariadb/docker-compose.yml debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Mariadb/docker-compose.yml
 
     - name: Copy mongodb files
-      run: scp -i ~/.ssh/id_test -r ./Mongodb debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Mongodb/
+      run: sudo rm -f /home/debian/ARMarket/ARM_Starter/Mongodb/ && scp -i ~/.ssh/id_test ./Mongodb/docker-compose.yml debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Mongodb/docker-compose.yml
 
     - name: Copy traefik files
-      run: scp -i ~/.ssh/id_test -r ./Traefik debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Traefik/
+      run: sudo rm -f /home/debian/ARMarket/ARM_Starter/Traefik/ && scp -i ~/.ssh/id_test -r ./Traefik debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Traefik/
 
     - name: Copy autorun file
-      run: scp -i ~/.ssh/id_test ./run/build.sh debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/build.sh
+      run: scp -i ~/.ssh/id_test -f ./run/build.sh debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/build.sh
         
 
     - name: run containers

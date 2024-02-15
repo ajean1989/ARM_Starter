@@ -2,9 +2,7 @@ version: '3'
 
 services:
   mariadb:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image : mariadb:10.11.5
     container_name: mariadb
     restart: always
     environment:
@@ -13,6 +11,10 @@ services:
       # Il faut se connecter avec le nom du container dans adminer dans host #
     ports:
       - "3306:3306"  # Port MariaDB
+    volumes:
+      - ../../volumes/mariadb/db:/var/lib/mysql:Z
+      - ../../volumes/mariadb/init:/docker-entrypoint-initdb.d/
+      - ../../volumes/mariadb/backup:/backup
     networks:
       - production-network
   

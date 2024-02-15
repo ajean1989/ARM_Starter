@@ -11,3 +11,4 @@ providers:
     endpoint: unix:///var/run/docker.sock   # Listen to the UNIX Docker socket
     network: production-network           # Default network to use for connections to all containers.
    
+accessLog: {}
