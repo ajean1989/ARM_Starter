@@ -62,7 +62,7 @@ jobs:
 
     - name: Run tests
       run: |
-        sudo ls /var/lib/mysql && docker exec tests pytest
+        docker exec mariadb ls /docker-entrypoint-initdb.d && docker exec mariadb ls /var/lib/mysql && sudo ls /var/lib/mysql && docker exec tests pytest
 
 
   deploy:
