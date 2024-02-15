@@ -21,7 +21,7 @@ cd ..
 cd Traefik
 docker compose up --build -d
 
-sleep 30
+sleep 60
 
 cd ..
 cd tests
