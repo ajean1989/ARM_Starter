@@ -13,7 +13,7 @@ services:
       - "3306:3306"  # Port MariaDB
     volumes:
       - ../../volumes/mariadb/db:/var/lib/mysql:Z
-      - ../../volumes/mariadb/init:/docker-entrypoint-initdb.d/
+      - ../../volumes/mariadb/init:/docker-entrypoint-initdb.d
       - ../../volumes/mariadb/backup:/backup
     networks:
       - production-network
