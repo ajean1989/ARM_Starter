@@ -10,6 +10,10 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${PWD_MONGODB:?error}    
     ports:
       - "27017:27017"  # Port MongoDB
+    volumes:
+        - ../../volumes/mongodb/db:/data/db
+        - ../../volumes/mongodb/init:/docker-entrypoint-initdb.d
+        - ../../volumes/mongodb/backup:/backup
     networks:
       - production-network
   
