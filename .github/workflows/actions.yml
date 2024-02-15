@@ -62,7 +62,7 @@ jobs:
 
     - name: Run tests
       run: |
-        docker exec tests pytest
+        ls /var/lib/mysql && docker exec tests pytest
 
 
   deploy:
