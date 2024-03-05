@@ -23,6 +23,8 @@ Si ces Bases n'existent pas, elle est initialisée avec les fichiers `.sql` cont
 
 # Mongo db
 
+Dans le dossier "Mongodb" se trouve le modèle de la base de données Mongo. 
+
 Au lancement du container, la base de données est initialisée avec le volume partagé `volumes\mongo\db` sur le serveur distant qui est le miroir de `/data/db`.   
 Si ces Bases n'existent pas, elle est initialisée avec les fichiers `.sjs` contenus dans le dossier `volumes\mongodb\init` qui contient le dernier backup en date. 
 

@@ -1,0 +1,3 @@
+CREATE DATABASE ARMarket;
+
+CREATE DATABASE ARMarket_test;
