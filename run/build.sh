@@ -21,3 +21,4 @@ cd ..
 cd Traefik
 docker compose up --build -d
 
+cd ..
