@@ -1,6 +1,7 @@
 entryPoints:
   web:
     address: ":80"
+
   
 api:
   dashboard : true
@@ -12,3 +13,12 @@ providers:
     network: production-network           # Default network to use for connections to all containers.
    
 accessLog: {}
+
+metrics:
+  prometheus:
+    buckets:
+      - 0.1
+      - 0.3
+      - 1.2
+      - 5.0
+    addRoutersLabels: true
