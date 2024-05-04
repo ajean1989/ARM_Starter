@@ -29,7 +29,7 @@ services:
       - ./traefik-config/prometheus.yml:/etc/prometheus/prometheus.yml
       # persister les données
       - ../../volumes/prometheus/db:/prometheus
-    user: "472"
+    user: "${UID}"
     networks:
       - production-network
     depends_on:
