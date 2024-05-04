@@ -7,10 +7,12 @@ services:
     # Enables the web UI and tells Traefik to listen to docker
     ports:
       - "80:80"
+      - "443:443"
       # The Web UI (enabled by --api.insecure=true)
       - "8080:8080"
     volumes:
       # So that Traefik can listen to the Docker events
+      - ../../volumes/letsencrypt:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik-config/:/etc/traefik/
 
@@ -33,7 +35,7 @@ services:
       - reverse-proxy
 
   grafana:
-    image: grafana/grafana:10.4.2
+    image: grafana/grafana-enterprise:10.4.2:10.4.2
     container_name: grafana
     ports:
       - "3001:3000"
@@ -43,7 +45,9 @@ services:
       # config
       - ./traefik-config/grafana.ini:/etc/grafana/grafana.ini
     labels:
-      - traefik.http.routers.grafana.rule=PathPrefix(`/grafana`)
+      - traefik.http.routers.grafana.rule= Host(`jacquenet.com`) && PathPrefix(`/grafana`))
+      - traefik.http.routers.grafana.tls=true
+      - traefik.http.routers.grafana.tls.certresolver=myresolver
     networks:
       - production-network
     depends_on:
