@@ -45,6 +45,7 @@ services:
       - ../../volumes/grafana/db:/var/lib/grafana
       # config
       - ./traefik-config/grafana.ini:/etc/grafana/grafana.ini
+    user: "${UID}"
     labels:
       - traefik.http.routers.grafana.rule= Host(`jacquenet.com`) && PathPrefix(`/grafana`))
       - traefik.http.routers.grafana.tls=true
