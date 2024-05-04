@@ -29,7 +29,7 @@ services:
       - ./traefik-config/prometheus.yml:/etc/prometheus/prometheus.yml
       # persister les données
       - ../../volumes/prometheus/db:/prometheus
-    user: "1000:1000"
+    user: root
     networks:
       - production-network
     depends_on:
@@ -45,7 +45,7 @@ services:
       - ../../volumes/grafana/db:/var/lib/grafana
       # config
       - ./traefik-config/grafana.ini:/etc/grafana/grafana.ini
-    user: "1000:1000"
+    user: root
     labels:
       - traefik.http.routers.grafana.rule= Host(`jacquenet.com`) && PathPrefix(`/grafana`))
       - traefik.http.routers.grafana.tls=true
