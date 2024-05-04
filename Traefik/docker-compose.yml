@@ -47,7 +47,7 @@ services:
       - ./traefik-config/grafana.ini:/etc/grafana/grafana.ini
     user: root
     labels:
-      - traefik.http.routers.grafana.rule= Host(`jacquenet.com`) && PathPrefix(`/grafana`))
+      - traefik.http.routers.grafana.rule= Host(`jacquenet.com`) && PathPrefix(`/grafana`)
       - traefik.http.routers.grafana.tls=true
       - traefik.http.routers.grafana.tls.certresolver=myresolver
     networks:
