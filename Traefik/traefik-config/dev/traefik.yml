@@ -1,0 +1,41 @@
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+# certificatesResolvers:
+#   myresolver:
+#     acme:
+#       email: ad.jacquenet@gmail.com
+#       storage: /letsencrypt/acme.json
+#       httpChallenge:
+#         # used during the challenge
+#         entryPoint: web
+
+
+api:
+  dashboard : true
+  insecure: true
+
+providers:
+  file:
+    filename: /etc/traefik/tls.yml
+  
+  docker:
+    endpoint: unix:///var/run/docker.sock   # Listen to the UNIX Docker socket
+    network: production-network           # Default network to use for connections to all containers.
+    watch: true
+    exposedByDefault: true
+    # defaultRule: "HostRegexp(`{{ index .Labels \"com.docker.compose.service\"}}.traefik.me`,`{{ index .Labels \"com.docker.compose.service\"}}-{dashed-ip:.*}.traefik.me`)"
+   
+accessLog: {}
+
+metrics:
+  prometheus:
+    buckets:
+      - 0.1
+      - 0.3
+      - 1.2
+      - 5.0
+    addRoutersLabels: true

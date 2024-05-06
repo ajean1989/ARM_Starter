@@ -1,0 +1,8 @@
+reverse-proxy:
+  volumes: 
+    - ./traefik-config/prod/:/etc/traefik/
+    - ../../volumes/letsencrypt:/letsencrypt
+  labels:
+    - traefik.http.routers.adminer.rule= Host(`jacquenet.com`) && PathPrefix(`/grafana`)
+    - traefik.http.routers.grafana.tls.certresolver=myresolver
+    - traefik.http.routers.adminer-tls.tls.domains[0].main=jacquenet.com

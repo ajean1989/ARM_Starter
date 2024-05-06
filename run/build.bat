@@ -10,6 +10,6 @@ docker compose up --build -d --force-recreate
 
 cd ..
 cd Traefik
-docker compose up --build -d --force-recreate
+docker compose --profile dev up --build -d --force-recreate
 
 cd ..

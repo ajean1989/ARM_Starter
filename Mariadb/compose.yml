@@ -26,8 +26,12 @@ services:
       - 8082:8080
     networks:
       - production-network
+    # labels:
+      # - traefik.http.routers.adminer.rule=PathPrefix(`/adminer`)
     labels:
-      - traefik.http.routers.adminer.rule=PathPrefix(`/adminer`)
+      - traefik.http.routers.adminer.rule= Host(`jacquenet.traefik.me`) && PathPrefix(`/adminer`)
+      - traefik.http.routers.adminer.tls=true
+      - traefik.http.routers.adminer-tls.tls.domains[0].main=jacquenet.traefik.me
 
 
 networks:

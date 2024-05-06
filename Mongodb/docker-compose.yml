@@ -33,8 +33,11 @@ services:
       - mongodb
     networks:
       - production-network
-    labels:
-      - traefik.http.routers.mongo-express.rule=PathPrefix(`/mongoexpress`)
+
+    # labels:
+    #   - traefik.http.routers.mongo-express.rule= Host(`jacquenet.traefik.me`) && PathPrefix(`/mongoexpress`)
+    #   - traefik.http.routers.mongo-express.tls=true
+    #   - traefik.http.routers.mongo-express-tls.tls.domains[0].main=jacquenet.traefik.me
 
 networks:
   production-network:

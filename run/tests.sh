@@ -11,7 +11,7 @@ else
 fi
 
 cd Mariadb 
-docker compose up --build -d
+docker compose -f compose.yml -f compose.prod.yml run --build -d
 
 cd ..
 cd Mongodb 
@@ -19,7 +19,7 @@ docker compose up --build -d
 
 cd ..
 cd Traefik
-docker compose up --build -d
+docker compose -f compose.yml -f compose.prod.yml run --build -d
 
 sleep 60
 

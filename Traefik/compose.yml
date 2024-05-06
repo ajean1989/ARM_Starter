@@ -5,17 +5,36 @@ services:
     image: traefik:v2.10
     container_name: traefik
     # Enables the web UI and tells Traefik to listen to docker
+    env_file:
+      - path: ./prod.env
+        required: false
+      - path: ./dev.env
+        required: false
     ports:
       - "80:80"
       - "443:443"
       # The Web UI (enabled by --api.insecure=true)
       - "8080:8080"
+    # command:
+    #   - --configFile=traefik-static-dev.yml
     volumes:
       # So that Traefik can listen to the Docker events
-      - ../../volumes/letsencrypt:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./traefik-config/:/etc/traefik/
+      - ./traefik-config/dev/:/etc/traefik/
+      - ./certs/:/etc/ssl/traefik/
 
+    networks:
+      - production-network
+
+  reverse-proxy-https-helper:
+    image: alpine
+    container_name: traefik-me
+    profiles: [dev]
+    command: sh -c "cd /etc/ssl/traefik
+      && wget traefik.me/cert.pem -O cert.pem
+      && wget traefik.me/privkey.pem -O privkey.pem"
+    volumes:
+      - ./certs/:/etc/ssl/traefik/
     networks:
       - production-network
 
@@ -26,10 +45,14 @@ services:
       - "9090:9090"
     volumes:
       # volume pour insérer le fichier de configuration de prometheus dans le container
-      - ./traefik-config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./traefik-config/dev/prometheus.yml:/etc/prometheus/prometheus.yml
       # persister les données
       - ../../volumes/prometheus/db:/prometheus
     user: root
+    # labels:
+    #   - traefik.http.routers.grafana.rule= Host(`jacquenet.com`) && PathPrefix(`/prometheus`)
+    #   - traefik.http.routers.grafana.tls=true
+    #   - traefik.http.routers.grafana.tls.certresolver=myresolver
     networks:
       - production-network
     depends_on:
@@ -38,18 +61,23 @@ services:
   grafana:
     image: grafana/grafana-enterprise:10.4.2
     container_name: grafana
+    env_file:
+      - path: ./prod.env
+        required: false
+      - path: ./dev.env
+        required: false
     ports:
       - "3001:3000"
     volumes:
       # Persiste des configs, tableau de bord etc
       - ../../volumes/grafana/db:/var/lib/grafana
       # config
-      - ./traefik-config/grafana.ini:/etc/grafana/grafana.ini
+      - ./traefik-config/dev/grafana.ini:/etc/grafana/grafana.ini
     user: root
     labels:
-      - traefik.http.routers.grafana.rule= Host(`jacquenet.com`) && PathPrefix(`/grafana`)
+      - traefik.http.routers.grafana.rule= Host(`jacquenet.traefik.me`) && PathPrefix(`/grafana`)
       - traefik.http.routers.grafana.tls=true
-      - traefik.http.routers.grafana.tls.certresolver=myresolver
+      - traefik.http.routers.grafana-tls.tls.domains[0].main=jacquenet.traefik.me
     networks:
       - production-network
     depends_on:

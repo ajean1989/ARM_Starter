@@ -4,3 +4,5 @@
 *.code-workspace
 *.pyc
 *.log
+
+*.pem
