@@ -1,5 +1,9 @@
-adminer:
-  labels:
-    - traefik.http.routers.adminer.rule= Host(`jacquenet.com`) && PathPrefix(`/adminer`)
-    - traefik.http.routers.adminer.tls.certresolver=myresolver
-    - traefik.http.routers.adminer-tls.tls.domains[0].main=jacquenet.com
+version: '3'
+
+services:
+
+  adminer:
+    labels:
+      - traefik.http.routers.adminer.rule= Host(`jacquenet.com`) && PathPrefix(`/adminer`)
+      - traefik.http.routers.adminer.tls.certresolver=myresolver
+      - traefik.http.routers.adminer-tls.tls.domains[0].main=jacquenet.com
