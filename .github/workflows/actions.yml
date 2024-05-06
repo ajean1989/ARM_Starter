@@ -57,6 +57,10 @@ jobs:
     - name: retrieve init.db
       run: cd .. && scp -i ~/.ssh/id_test -o StrictHostKeyChecking=no debian@$SERVER_VPS1_IP:/home/debian/ARMarket/volumes/mariadb/init/* ./volumes/mariadb/init/
 
+
+    - name: https test
+      run: pip install --upgrade certifi
+      
     - name: init test plateform
       run: bash run/tests.sh
 
