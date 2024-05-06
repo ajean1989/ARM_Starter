@@ -97,7 +97,7 @@ jobs:
       run: ssh -i ~/.ssh/id_test -o StrictHostKeyChecking=no debian@$SERVER_VPS1_IP "if ["$(docker ps -aq)"]; then docker ps -a -q | xargs docker rm -f; fi"
 
     - name: Copy mariadb files
-      run: sudo rm -f /home/debian/ARMarket/ARM_Starter/Mariadb/ && scp -i ~/.ssh/id_test ./Mariadb/docker-compose.yml debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Mariadb/docker-compose.yml
+      run: sudo rm -f /home/debian/ARMarket/ARM_Starter/Mariadb/ && scp -i ~/.ssh/id_test ./Mariadb/* debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Mariadb/
 
     - name: Copy mongodb files
       run: sudo rm -f /home/debian/ARMarket/ARM_Starter/Mongodb/ && scp -i ~/.ssh/id_test ./Mongodb/docker-compose.yml debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Mongodb/docker-compose.yml
