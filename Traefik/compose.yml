@@ -5,11 +5,6 @@ services:
     image: traefik:v2.10
     container_name: traefik
     # Enables the web UI and tells Traefik to listen to docker
-    env_file:
-      - path: ./prod.env
-        required: false
-      - path: ./dev.env
-        required: false
     ports:
       - "80:80"
       - "443:443"
