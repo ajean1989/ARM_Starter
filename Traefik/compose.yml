@@ -66,6 +66,7 @@ services:
     user: root
     networks:
       - production-network
+      
     depends_on:
       - prometheus
 

@@ -19,7 +19,7 @@ docker compose up --build -d
 
 cd ..
 cd Traefik
-docker compose -f compose.yml -f compose.dev.yml --ip 172.17.0.100 up --build -d 
+docker compose -f compose.yml -f compose.dev.yml up --build -d 
 
 sleep 60
 
