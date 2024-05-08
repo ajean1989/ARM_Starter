@@ -1,0 +1,12 @@
+services:
+
+  reverse-proxy:
+    volumes: 
+      - ./traefik-config/dev/:/etc/traefik/
+      - ./certs/:/etc/ssl/traefik/
+  
+  grafana:
+    labels:
+        - traefik.http.routers.grafana.rule= Host(`traefik`) && PathPrefix(`/grafana`)
+        - traefik.http.routers.grafana-tls.tls.domains[0].main=traefik
+        - traefik.http.routers.grafana-tls.tls.domains[0].sans=traefik

@@ -1,0 +1,7 @@
+services:
+
+  adminer:
+    labels:
+        - traefik.http.routers.adminer.rule= Host(`traefik`) && PathPrefix(`/adminer`)
+        - traefik.http.routers.adminer-tls.tls.domains[0].main=traefik
+        - traefik.http.routers.adminer-tls.tls.domains[0].sans=traefik

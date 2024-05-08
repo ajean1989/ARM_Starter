@@ -4,9 +4,6 @@ services:
     volumes: 
       - ./traefik-config/dev/:/etc/traefik/
       - ./certs/:/etc/ssl/traefik/
-    networks:
-      production-network:
-        ipv4_address: 172.17.0.100
   
   grafana:
     labels:
