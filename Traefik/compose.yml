@@ -13,6 +13,9 @@ services:
     volumes:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - traefik.http.routers.reverse-proxy.tls=true
+      - traefik.http.routers.grafana.priority=97
 
     networks:
       - production-network
@@ -61,6 +64,7 @@ services:
       - ./traefik-config/dev/grafana.ini:/etc/grafana/grafana.ini
     labels:
       - traefik.http.routers.grafana.tls=true
+      - traefik.http.routers.grafana.priority=98
 
     user: root
     networks:

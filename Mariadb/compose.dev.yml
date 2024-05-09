@@ -5,3 +5,4 @@ services:
       - traefik.http.routers.adminer.rule= Host(`jacquenet.traefik.me`) && PathPrefix(`/adminer`)
       - traefik.http.routers.adminer-tls.tls.domains[0].main=jacquenet.traefik.me
       - traefik.http.routers.adminer-tls.tls.domains[0].sans=jacquenet-*.traefik.me
+      

@@ -5,3 +5,4 @@ services:
       - traefik.http.routers.adminer.rule= Host(`jacquenet.com`) && PathPrefix(`/adminer`)
       - traefik.http.routers.adminer.tls.certresolver=myresolver
       - traefik.http.routers.adminer-tls.tls.domains[0].main=jacquenet.com
+      

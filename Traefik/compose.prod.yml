@@ -4,6 +4,11 @@ services:
     volumes: 
       - ./traefik-config/prod/:/etc/traefik/
       - ../../volumes/letsencrypt:/letsencrypt
+    labels:
+      - traefik.http.routers.reverse-proxy.rule= Host(`jacquenet.com`) && PathPrefix(`/traefik-dashboard`)
+      - traefik.http.routers.reverse-proxy.tls.certresolver=myresolver
+      - traefik.http.routers.reverse-proxy-tls.tls.domains[0].main=jacquenet.com
+
   grafana:
     labels:
       - traefik.http.routers.grafana.rule= Host(`jacquenet.com`) && PathPrefix(`/grafana`)
