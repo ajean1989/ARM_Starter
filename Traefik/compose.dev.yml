@@ -4,6 +4,10 @@ services:
     volumes: 
       - ./traefik-config/dev/:/etc/traefik/
       - ./certs/:/etc/ssl/traefik/
+    labels:
+        - traefik.http.routers.reverse-proxy.rule= Host(`traefik.jacquenet.traefik.me`)
+        - traefik.http.routers.reverse-proxy-tls.tls.domains[0].main=jacquenet.traefik.me
+        - traefik.http.routers.reverse-proxy-tls.tls.domains[0].sans=*.jacquenet.traefik.me
   
   grafana:
     labels:

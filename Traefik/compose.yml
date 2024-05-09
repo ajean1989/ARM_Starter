@@ -7,15 +7,20 @@ services:
       - "80:80"
       - "443:443"
       # The Web UI (enabled by --api.insecure=true)
-      - "8080:8080"
+      # - "8080:8080"
     # command:
     #   - --configFile=traefik-static-dev.yml
     volumes:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
     labels:
+      - traefik.enable=true
+      # - traefik.http.routers.reverse-proxy.service=api@internal
       - traefik.http.routers.reverse-proxy.tls=true
-      - traefik.http.routers.grafana.priority=97
+      - traefik.http.routers.reverse-proxy.service=api@internal
+      - traefik.http.routers.reverse-proxy.middlewares=auth
+      - traefik.http.middlewares.auth.basicauth.users=admin:$$2a$$12$$hHIbr9QCQXvcmGuxcg293Obe2D2itDWRummr/iqkxBVx/e0D0fJKe
+      - traefik.http.routers.reverse-proxy.priority=402
 
     networks:
       - production-network
@@ -64,7 +69,7 @@ services:
       - ./traefik-config/dev/grafana.ini:/etc/grafana/grafana.ini
     labels:
       - traefik.http.routers.grafana.tls=true
-      - traefik.http.routers.grafana.priority=98
+      - traefik.http.routers.grafana.priority=401
 
     user: root
     networks:
