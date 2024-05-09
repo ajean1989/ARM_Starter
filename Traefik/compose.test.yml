@@ -7,7 +7,7 @@ services:
     labels:
         - traefik.http.routers.reverse-proxy.rule= Host(`traefik.traefik`)
         - traefik.http.routers.reverse-proxy-tls.tls.domains[0].main=traefik
-        - traefik.http.routers.reverse-proxy-tls.tls.domains[0].sans=traefik
+        - traefik.http.routers.reverse-proxy-tls.tls.domains[0].sans=*.traefik
   
   grafana:
     labels:

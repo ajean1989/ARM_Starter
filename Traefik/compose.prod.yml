@@ -8,6 +8,7 @@ services:
       - traefik.http.routers.reverse-proxy.rule= Host(`traefik.jacquenet.com`)
       - traefik.http.routers.reverse-proxy.tls.certresolver=myresolver
       - traefik.http.routers.reverse-proxy-tls.tls.domains[0].main=jacquenet.com
+      - traefik.http.routers.reverse-proxy-tls.tls.domains[0].sans=*.jacquenet.com
 
   grafana:
     labels:
