@@ -25,11 +25,11 @@ services:
       ME_CONFIG_MONGODB_SERVER: mongodb
       ME_CONFIG_MONGODB_ADMINUSERNAME: ${USER_MONGODB:?error}
       ME_CONFIG_MONGODB_ADMINPASSWORD: ${PWD_MONGODB:?error}
-      ME_CONFIG_BASICAUTH_USERNAME : ${USER_MONGODB:?error}
-      ME_CONFIG_BASICAUTH_PASSWORD : ${PWD_MONGODB:?error}
+      # ME_CONFIG_BASICAUTH_USERNAME : ${USER_MONGODB:?error}
+      # ME_CONFIG_BASICAUTH_PASSWORD : ${PWD_MONGODB:?error}
     labels:
-      - traefik.http.routers.prometheus.tls=true
-      - traefik.http.routers.prometheus.priority=479
+      - traefik.http.routers.mongo-express.tls=true
+      - traefik.http.routers.mongo-express.priority=479
     depends_on:
       - mongodb
     networks:
