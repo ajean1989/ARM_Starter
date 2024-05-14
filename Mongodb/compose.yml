@@ -27,6 +27,9 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: ${PWD_MONGODB:?error}
       ME_CONFIG_BASICAUTH_USERNAME : ${USER_MONGODB:?error}
       ME_CONFIG_BASICAUTH_PASSWORD : ${PWD_MONGODB:?error}
+    labels:
+      - traefik.http.routers.prometheus.tls=true
+      - traefik.http.routers.prometheus.priority=479
     depends_on:
       - mongodb
     networks:

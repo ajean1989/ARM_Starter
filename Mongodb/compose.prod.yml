@@ -1,0 +1,7 @@
+services:
+
+  mongo-express:
+    labels:
+      - traefik.http.routers.mongo-express.rule= Host(`jacquenet.com`) && PathPrefix(`/mongo-express`)
+      - traefik.http.routers.mongo-express.tls.certresolver=myresolver
+      - traefik.http.routers.mongo-express-tls.tls.domains[0].main=jacquenet.com

@@ -15,7 +15,7 @@ docker compose -f compose.yml -f compose.prod.yml up --build -d
 
 cd ..
 cd Mongodb 
-docker compose up --build -d
+docker compose -f compose.yml -f compose.prod.yml up --build -d
 
 cd ..
 cd Traefik

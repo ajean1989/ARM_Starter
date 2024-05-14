@@ -6,7 +6,7 @@ docker compose -f compose.yml -f compose.dev.yml up --build -d --force-recreate
 
 cd ..
 cd Mongodb 
-docker compose up --build -d --force-recreate
+docker compose -f compose.yml up --build -d --force-recreate
 
 cd ..
 cd Traefik
