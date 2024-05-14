@@ -103,8 +103,11 @@ jobs:
       run: sudo rm -f /home/debian/ARMarket/ARM_Starter/Mariadb/ && scp -i ~/.ssh/id_test ./Mariadb/compose.prod.yml debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Mariadb/compose.prod.yml
 
     - name: Copy mongodb files
-      run: sudo rm -f /home/debian/ARMarket/ARM_Starter/Mongodb/ && scp -i ~/.ssh/id_test ./Mongodb/docker-compose.yml debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Mongodb/docker-compose.yml
+      run: sudo rm -f /home/debian/ARMarket/ARM_Starter/Mongodb/ && scp -i ~/.ssh/id_test ./Mongodb/compose.yml debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Mongodb/compose.yml
 
+    - name: Copy mongodb prod files
+      run: sudo rm -f /home/debian/ARMarket/ARM_Starter/Mongodb/ && scp -i ~/.ssh/id_test ./Mongodb/compose.prod.yml debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Mongodb/compose.prod.yml
+    
     - name: Copy traefik files
       run: sudo rm -f /home/debian/ARMarket/ARM_Starter/Traefik/ && scp -i ~/.ssh/id_test -r ./Traefik/* debian@$SERVER_VPS1_IP:/home/debian/ARMarket/ARM_Starter/Traefik/
 
