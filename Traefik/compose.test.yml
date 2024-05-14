@@ -11,7 +11,7 @@ services:
   
   prometheus:
     labels:
-      - traefik.http.routers.prometheus.rule= Host(`traefik`) && PathPrefix(`/prometheus`)
+      - traefik.http.routers.prometheus.rule= Host(`traefik`) && PathPrefix(`/metrics`)
       - traefik.http.routers.prometheus-tls.tls.domains[0].main=traefik
       - traefik.http.routers.prometheus-tls.tls.domains[0].sans=traefik
   

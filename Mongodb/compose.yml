@@ -26,8 +26,8 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: ${USER_MONGODB:?error}
       ME_CONFIG_MONGODB_ADMINPASSWORD: ${PWD_MONGODB:?error}
       ME_CONFIG_BASICAUTH : false
-      # ME_CONFIG_BASICAUTH_USERNAME : ${USER_MONGODB:?error}
-      # ME_CONFIG_BASICAUTH_PASSWORD : ${PWD_MONGODB:?error}
+      ME_CONFIG_BASICAUTH_USERNAME : ""
+      ME_CONFIG_BASICAUTH_PASSWORD : ""
     labels:
       - traefik.http.routers.mongo-express.tls=true
       - traefik.http.routers.mongo-express.priority=479
