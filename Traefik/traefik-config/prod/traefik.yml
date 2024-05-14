@@ -3,6 +3,9 @@ entryPoints:
     address: ":80"
   websecure:
     address: ":443"
+  metrics:
+    address: :8082
+
 
 certificatesResolvers:
   myresolver:
@@ -33,3 +36,4 @@ metrics:
       - 1.2
       - 5.0
     addRoutersLabels: true
+    entryPoint: prometheus
