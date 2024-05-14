@@ -36,4 +36,4 @@ metrics:
       - 1.2
       - 5.0
     addRoutersLabels: true
-    entryPoint: prometheus
+    entryPoint: metrics
