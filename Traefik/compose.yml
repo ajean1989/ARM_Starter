@@ -48,10 +48,9 @@ services:
       # persister les données
       - ../../volumes/prometheus/db:/prometheus
     user: root
-    # labels:
-    #   - traefik.http.routers.grafana.rule= Host(`jacquenet.com`) && PathPrefix(`/prometheus`)
-    #   - traefik.http.routers.grafana.tls=true
-    #   - traefik.http.routers.grafana.tls.certresolver=myresolver
+    labels:
+      - traefik.http.routers.prometheus.tls=true
+      - traefik.http.routers.prometheus.priority=478
     networks:
       - production-network
     depends_on:

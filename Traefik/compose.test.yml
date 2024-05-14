@@ -9,6 +9,12 @@ services:
         - traefik.http.routers.reverse-proxy-tls.tls.domains[0].main=traefik
         - traefik.http.routers.reverse-proxy-tls.tls.domains[0].sans=*.traefik
   
+  prometheus:
+    labels:
+      - traefik.http.routers.prometheus.rule= Host(`traefik`) && PathPrefix(`/prometheus`)
+      - traefik.http.routers.prometheus-tls.tls.domains[0].main=traefik
+      - traefik.http.routers.prometheus-tls.tls.domains[0].sans=traefik
+  
   grafana:
     labels:
         - traefik.http.routers.grafana.rule= Host(`traefik`) && PathPrefix(`/grafana`)
