@@ -22,8 +22,8 @@ scrape_configs:
   - job_name: 'node'
     static_configs:
     - targets: ['jacquenet.com:8888']
-    # metrics_path: '/metrics'
-    # scheme: 'https'
+    metrics_path: '/metrics'
+    scheme: 'https'
     # basic_auth:
     #   username: 'admin'
     #   password: 'pass'
