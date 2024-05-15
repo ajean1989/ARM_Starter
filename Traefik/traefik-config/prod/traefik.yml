@@ -3,8 +3,7 @@ entryPoints:
     address: ":80"
   websecure:
     address: ":443"
-  metrics:
-    address: ":8888"
+  
  
 
 
@@ -39,4 +38,4 @@ metrics:
       - 5.0
     addRoutersLabels: true
     addEntryPointsLabels: true
-    entryPoint: metrics
+    entryPoint: websecure

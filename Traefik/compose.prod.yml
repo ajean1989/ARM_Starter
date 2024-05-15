@@ -12,7 +12,7 @@ services:
   
   prometheus:
     labels:
-      - traefik.http.routers.prometheus.rule= Host(`jacquenet.com`) && PathPrefix(`/metrics`)
+      - traefik.http.routers.prometheus.rule= Host(`jacquenet.com`) && PathPrefix(`/prometheus`)
       - traefik.http.routers.prometheus.tls.certresolver=myresolver
       - traefik.http.routers.prometheus-tls.tls.domains[0].main=jacquenet.com
     volumes:
