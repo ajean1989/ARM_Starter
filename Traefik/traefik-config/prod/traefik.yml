@@ -35,4 +35,5 @@ metrics:
       - 1.2
       - 5.0
     addRoutersLabels: true
+    addEntryPointsLabels: true
     entryPoint: websecure
