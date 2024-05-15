@@ -11,10 +11,10 @@ services:
       - traefik.http.routers.reverse-proxy-tls.tls.domains[0].sans=*.jacquenet.com
   
   prometheus:
-    # labels:
-    #   - traefik.http.routers.prometheus.rule= Host(`jacquenet.com`) && PathPrefix(`/metrics`)
-    #   - traefik.http.routers.prometheus.tls.certresolver=myresolver
-    #   - traefik.http.routers.prometheus-tls.tls.domains[0].main=jacquenet.com
+    labels:
+      - traefik.http.routers.prometheus.rule= Host(`jacquenet.com`) && PathPrefix(`/metrics`)
+      - traefik.http.routers.prometheus.tls.certresolver=myresolver
+      - traefik.http.routers.prometheus-tls.tls.domains[0].main=jacquenet.com
     volumes:
       - ./traefik-config/prod/prometheus.yml:/etc/prometheus/prometheus.yml
 
